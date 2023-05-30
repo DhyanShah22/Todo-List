@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const todoRoutes = require('./Routes/todo-routes')
+
 require('dotenv').config()
 const logger  = require('morgan')
 const app = express()
@@ -13,7 +14,7 @@ app.use((req,res,next) => {
     next()
 })
 
-app.use('api/todolist', todoRoutes)
+app.use('/api/todolist', todoRoutes)
 
 mongoose.connect(process.env.MONG_URI)
     .then( () => {
